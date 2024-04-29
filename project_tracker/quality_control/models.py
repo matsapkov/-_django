@@ -22,6 +22,7 @@ class BugReport(models.Model):
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
+        default='not selected'
     )
     PRIORITY_CHOICES = [
             (1, "low"),
@@ -31,7 +32,11 @@ class BugReport(models.Model):
             (5, "immediate fix"),
     ]
 
-    priority = models.IntegerField(choices=PRIORITY_CHOICES,default=3)
+    priority = models.IntegerField(
+        choices=PRIORITY_CHOICES,
+        default=3
+    )
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -58,7 +63,11 @@ class FeatureRequest(models.Model):
         ("Принято","Accepted"),
         ("Отклонено","Rejected"),
     ]
-    status = models.CharField(max_length=100, choices=STATUS_CHOICES)
+    status = models.CharField(
+        max_length=100,
+        choices=STATUS_CHOICES,
+        default='not selected'
+    )
 
     PRIORITY_CHOICES = [
         (1, "low"),
@@ -67,7 +76,10 @@ class FeatureRequest(models.Model):
         (4, "Critical"),
         (5, "immediate fix"),
     ]
-    priority = models.IntegerField(choices=PRIORITY_CHOICES)
+    priority = models.IntegerField(
+        choices=PRIORITY_CHOICES,
+        default=3
+    )
 
 
     created_at = models.DateTimeField(auto_now_add=True)
