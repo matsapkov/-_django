@@ -10,6 +10,10 @@ class Project(models.Model):
         return self.name
 
 class Task(models.Model):
+
+    def __str__(self):
+        return self.name
+
     STATUS_CHOICES = [
         ('New', 'Новая'),
         ('In_progress', 'В работе'),
