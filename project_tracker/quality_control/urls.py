@@ -7,6 +7,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('bugs/', views.bug_list, name='bug_report'),
     path('features/', views.feature_list, name='feature_report'),
-    path('bug/<int:bug_id>/', views.bug_detail, name='bug_detail'),
-    path('feature/<int:feature_id>/', views.feature_detail, name='feature_detail'),
+    path('bugs/<int:bug_id>/', views.ClassBugDetailView.as_view(), name='bug_detail'),
+    path('features/<int:feature_id>/', views.ClassFeatureDetailView.as_view(), name='feature_detail'),
 ]
