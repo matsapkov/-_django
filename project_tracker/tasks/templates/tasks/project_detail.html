@@ -1,10 +1,18 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <h1>{{ feature.title }}</h1>
-    <p>{{ feature.description }}</p>
-    <p>Status: {{ feature.status }}</p>
-    <p>Priority level: {{ feature.priority }}</p>
-    <p>Project: {{ feature.project }}</p>
-    <p>Linked task: {{ feature.task }}</p>
+    <h1>{{ project.name }}</h1>
+    <p>{{ project.description }}</p>
+
+    <!-- Ссылка для добавления новой задачи -->
+    <p><a href="{% url 'tasks:add_task_to_project' project.id %}">Добавить новую задачу</a></p>
+
+    <h2>Задачи в проекте</h2>
+    <ul>
+        {% for task in project.tasks.all %}
+            <li><a href="{% url 'tasks:task_detail' project.id task.id %}">{{ task.name }}</a> - {{ task.status }}</li>
+        {% empty %}
+            <li>В этом проекте пока нет задач.</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

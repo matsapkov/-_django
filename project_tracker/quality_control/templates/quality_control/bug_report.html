@@ -2,6 +2,11 @@
 
 {% block content %}
     <h1>Список отчетов об ошибках</h1>
+
+  <!-- Ссылка на создание нового отчета об ошибказ -->
+    <p><a href="{% url 'quality_control:add_bug_report' %}">Создать новый отчет об ошибке</a></p>
+
+
     <ul>
         {% for bug in bug_report %}
             <li>{{ bug.title }} - {{ bug.status }} - <a href="{% url 'quality_control:bug_detail' bug.id %}">Детали</a></li>
